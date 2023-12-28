@@ -11,13 +11,35 @@
 
 <body>
 	<div id="app">
-		{{ test }}
+		<!-- <span v-if="name">Hello, {{ name }}! </span>
+		<span v-else>Please enter your name below</span>
+		<br/>
+		<input v-model="name"> -->
+		<input v-model="newName" />
+		<button @click="addName">Add name</button>
+		<button @click="clearName">clear name</button>
+		<ul>
+			<li v-for="name in names">{{name}}</li>
+			<!-- <button v-on:click="addName">Add name</button> -->
+		
+		</ul>
 	</div>
 	<script>
 		var vue = new Vue({
 			el: "#app",
 			data: {
-				test: "Hello world!",
+				// name:"Byeon",
+				newName: "",
+				names: ["Andy", "Bob", "Sarah", "John"],
+			},
+			methods: {
+				addName: function () {
+					this.names.push(this.newName);
+					this.newName = "";
+				},
+				clearName: function () {
+					this.names = []
+				},
 			}
 		});
 	</script>
